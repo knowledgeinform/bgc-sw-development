@@ -1,0 +1,36 @@
+<p class="text-2xl text-center font-semibold">Light FPD Instructions</p>
+
+<br />
+
+<ol class="list-decimal">
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <mat-icon *ngIf="lightFPDStatus; else notLoaded">check_circle</mat-icon>
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Click the "Light FPD" (flame photometric detector) button in the "Quick Access" panel. Once the flame has been
+      lit, the "System Status" Panel will update as shown below.
+    </li>
+  </div>
+</ol>
+
+<br />
+
+<div class="grid grid-cols-2 gap-4 items-center">
+  <p>Initial state, flame is <b>NOT</b> lit.</p>
+  <img src="../assets/images/system_status_flame_not_lit.png" alt="system status flame not lit" />
+  <p>Updated status if the flame has been successfully lit.</p>
+  <img src="../assets/images/system_status_flame_lit.png" alt="system status flame lit" />
+</div>
+
+<br />
+
+<div class="outline outline-offset-4">
+  <p>
+    <b>Troubleshooting:</b> If the flame does <b><i>not</i></b> light, click the "Light FPD" button again. If the issue
+    persist... TBD.
+  </p>
+</div>

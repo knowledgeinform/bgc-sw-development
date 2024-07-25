@@ -1,0 +1,54 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build: Clean Wheel",
+            "type": "shell",
+            "command": "rm -f dist/* && poetry build && ls dist",
+            "group": "build"
+        },
+        {
+            "label": "Test: Quick (no TBD)",
+            "type": "shell",
+            "command": "poetry run pytest -k \"not (TBD)\" --disable-warnings",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Test: Long (TBD)",
+            "type": "shell",
+            "command": "poetry run pytest -k \"TBD\" --disable-warnings",
+            "group": "test"
+        },
+        {
+            "label": "Verify: Run lint script",
+            "type": "shell",
+            "command": "activate && scripts/lint.sh && deactivate",
+            "windows": {
+                "command": ".venv\\Scripts\\activate & scripts\\lint.bat & deactivate",
+            },
+            "group": "none",
+        },
+        {
+            "label": "Verify: Run mypy",
+            "type": "shell",
+            "command": "activate && mypy drivers server && deactivate",
+            "windows": {
+                "command": ".venv\\Scripts\\activate & mypy drivers server & deactivate",
+            },
+            "group": "none",
+            "NOTE": "'poetry run dympy...' as above always sees the --exclude as an argument to dmypy"
+        },
+        {
+            "label": "Verify: Run ruff",
+            "type": "shell",
+            "command": "poetry run ruff .",
+            "group": "none",
+        },
+    ]
+}

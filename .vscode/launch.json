@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // Attribute meaning: https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes
+    //
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Py: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+        },
+        {
+            "name": "Test: Current File",
+            "type": "python",
+            "request": "test",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "purpose": [
+                "debug-test"
+            ],
+            "stopOnEntry": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+        },
+    ]
+}

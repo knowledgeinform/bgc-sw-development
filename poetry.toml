@@ -1,0 +1,3 @@
+[virtualenvs]
+create = true                     # create a new virtual environmet if one doesn't already exist
+in-project = true                 # create virtualenv in root ./.venv

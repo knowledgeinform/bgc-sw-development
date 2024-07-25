@@ -1,0 +1,32 @@
+<div class="h-full rounded-md mat-primary-bg-light p-4">
+  <p class="text-2xl text-center font-semibold pb-4">Quick Access</p>
+  <div class="flex flex-col px-4 gap-6">
+    <button mat-raised-button color="primary" class="quick-actions-button" (click)="loadInitiationMethod()">
+      Load Initiation Method
+    </button>
+
+    <button mat-raised-button color="primary" class="quick-actions-button" (click)="lightFPDRun()">Light FPD</button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="quick-actions-button"
+      (click)="loadMethod()"
+      [disabled]="!methodSelected[0]">
+      Load Method
+    </button>
+
+    <button mat-raised-button color="primary" class="quick-actions-button">Standard Injection</button>
+
+    <button mat-fab extended color="primary" class="start-sampling-button" disabled>
+      <p>
+        <mat-icon class="custom-icon-size">play_circle_filled</mat-icon>
+        Start Sampling
+      </p>
+    </button>
+
+    <button mat-raised-button color="primary" class="quick-actions-button">Change PCT</button>
+
+    <button mat-raised-button color="primary" class="quick-actions-button">Cool Zones</button>
+  </div>
+</div>

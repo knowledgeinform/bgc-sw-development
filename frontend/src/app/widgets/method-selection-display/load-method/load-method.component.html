@@ -1,0 +1,103 @@
+<p class="text-2xl text-center font-semibold">Load Method Instructions</p>
+
+<br />
+
+<p>
+  Use the following information to determine which method is most appropriate for the compound(s) and concentation you
+  would like to test.
+</p>
+
+<br />
+
+<p>What kind of exposure existed for the samples that are being tested?</p>
+
+<br />
+
+<ol class="list-disc ml-4">
+  <li>
+    <b><u>High (gross) exposure:</u></b> TBD
+  </li>
+  <li>
+    <b><u>Low exposure:</u></b> TBD
+  </li>
+</ol>
+
+<br />
+
+<p>
+  Based on the compounds and exposre concentration of interest, select am appropriate method from the dropdown list:
+</p>
+
+<br />
+
+<ol class="list-decimal">
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <mat-icon *ngIf="!methodControl.hasError('required'); else notLoaded">check_circle</mat-icon>
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      <b>Select the Method for Preview</b>
+    </li>
+  </div>
+  <div class="py-2"></div>
+
+  <!-- Method Dropdown -->
+  <mat-form-field>
+    <mat-label>Method Selection</mat-label>
+    <mat-select [formControl]="methodControl" (selectionChange)="isMethodSelected()" name="method" required>
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let method of methods" [value]="method">
+        {{ method.type }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="methodControl.hasError('required')">Please select a method</mat-error>
+  </mat-form-field>
+
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Review the details below to ensure that you have selected the preferred method. Once confirmed, click the "Load
+      Method" button in Quick Access.
+    </li>
+  </div>
+</ol>
+
+<div class="py-8">
+  <mat-divider></mat-divider>
+</div>
+
+<!-- Method Details Container -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Method Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="flex flex-row gap-4">
+      <p class="font-medium">Description:</p>
+      {{ methodControl.value?.description }}
+    </div>
+
+    <div class="py-2">
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <p class="font-medium">Cycle time:</p>
+      {{ methodControl.value?.cycle_time_string }}
+      <p class="font-medium">Heart-cut:</p>
+      {{ methodControl.value?.heart_cut_string }}
+      <p class="font-medium">High vs. Low Volume:</p>
+      {{ methodControl.value?.volume_string }}
+      <p class="font-medium">Compounds:</p>
+      {{ methodControl.value?.compounds_string }}
+    </div>
+  </mat-card-content>
+</mat-card>

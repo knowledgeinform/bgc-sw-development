@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "DavidAnson.vscode-markdownlint",
+    "dfarley1.file-picker",
+    "eamodio.gitlens",
+    "GitLab.gitlab-workflow",
+    "Gruntfuggly.todo-tree",
+    "ms-python.mypy-type-checker",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "mhutchie.git-graph",
+    "njpwerner.autodocstring",
+    "streetsidesoftware.code-spell-checker",
+    "tamasfe.even-better-toml",
+    "yzhang.markdown-all-in-one",
+  ]
+}

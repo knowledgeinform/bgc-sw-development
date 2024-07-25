@@ -1,0 +1,90 @@
+[tool.poetry]
+name = "bgc-sw"
+version = "0.0.1a0"
+description = "BGC Software"
+authors = []
+repository = "https://gitlab.jhuapl.edu/bgc/software/bgc-sw.git"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[[tool.poetry.source]]
+name = "artifactory-pypi"
+url = "https://artifactory.jhuapl.edu/artifactory/api/pypi/python-remote/simple/"
+default = true
+
+[[tool.poetry.source]]
+name = "artifactory-apl"
+url = "https://artifactory.jhuapl.edu/artifactory/api/pypi/python-public-local/simple/"
+default = false
+secondary = true
+
+[tool.poetry.group.dev.dependencies]
+# Unless noted otherwise, the following packages are allowed to vary through minor versions.
+# Major versions need to be consciously changed.
+coverage = "^7.3.2"
+ipykernel = "*"
+matplotlib = "^3.8.2"                                                          # TODO driver development make separate - more poetry though
+mypy = "^1"
+pyreadline3 = { markers = "platform_system == 'Windows'", version = "^3.4.1" } # so TAB completion works
+pytest = "^7.4.3"
+ruff = "^0"
+toml = "^0.10.2"
+watchfiles = "^0.21.0"
+
+[tool.poetry.group.package]
+optional = true
+
+[tool.poetry.group.package.dependencies]
+# dependencies for packaging the final system
+pyinstaller = "^6.3.0"
+
+[tool.poetry.dependencies]
+# Once things settle down these should all be ~ so they only vary in hopefully non-breaking patches
+#
+python = ">=3.11,<3.12"
+aioserial = "^1.3.1"
+fastapi = "^0.104.0"
+loguru = "^0.7.2"
+minimalmodbus = "~2.1.1" # TODO delete once everything switches to pymodbus
+pymodbus = "^3.6.2"
+pyserial = "^3.5"
+uvicorn = "^0.23.2"
+
+[tool.mypy]
+python_version = "3.11"
+packages = "server, tests"
+
+disallow_untyped_defs = true
+# ignore_missing_imports = true
+show_error_codes = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+
+# hmmm... it's in settings.json too, can't get it working in VS Code plugin
+exclude = ['/in_progress/']
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+[[tool.mypy.overrides]]
+module = ["aioserial", "minimalmodbus", "serial"]
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 120
+output-format = "grouped"
+target-version = "py311"                                   # Ruff specifies minimum version
+task-tags = ["BUG", "HACK", "TBD", "TODO", "FIXME", "XXX"]
+
+[tool.ruff.lint]
+# TODO Ruff autofix on save, maybe in settings.json...
+ignore = [
+    "E402", # Module level import not at top of file
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

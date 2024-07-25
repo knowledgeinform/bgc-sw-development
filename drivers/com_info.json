@@ -1,0 +1,9 @@
+{
+	"com_assignment": [
+		{
+			"mfc_port": "/dev/ttyUSB0",
+			"flame_igniter_port": "/dev/ttyUSB0",
+			"relay_board_port": "/dev/ttyUSB0"
+		}
+	]
+}

@@ -1,0 +1,27 @@
+<div class="h-full p-4 flex flex-row gap-x-2">
+  <div class="flex-auto w-3/12">
+    <app-initiation-steps
+      (currentDisplay)="updateMethodDisplay($event)"
+      [loadInitiationMethodStatus]="initiationMethodLoaded"
+      [lightFPDStatus]="lightFPDStatus"
+      [loadMethodStatus]="methodLoaded">
+    </app-initiation-steps>
+  </div>
+  <div class="flex-auto w-7/12">
+    <app-method-selection
+      [display]="currentMethodDisplay"
+      [loadInitiationMethodStatus]="initiationMethodLoaded"
+      [lightFPDStatus]="lightFPDStatus"
+      (methodSelectedStatus)="updateMethodSelection($event)"
+      [loadMethodStatus]="methodLoaded">
+    </app-method-selection>
+  </div>
+  <div class="flex-auto w-2/12">
+    <app-quick-access
+      (isInitiationMethodLoaded)="updateInitiationMethodStatus($event)"
+      (isLightFPDRunning)="updateLightFPDStatus($event)"
+      [methodSelected]="methodSelected"
+      (isMethodLoaded)="updateMethodStatus($event)"
+      (loadedMethod)="updateLoadedMethod($event)"></app-quick-access>
+  </div>
+</div>

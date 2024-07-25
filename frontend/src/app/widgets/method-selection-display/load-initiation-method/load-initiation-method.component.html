@@ -1,0 +1,52 @@
+<p class="text-2xl text-center font-semibold">Load Initiation Method Instructions</p>
+
+<br />
+
+<ol class="list-decimal">
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <mat-icon *ngIf="loadInitiationMethodStatus; else notLoaded">check_circle</mat-icon>
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Click the "Load Initiation Method" button to load the default method for initiating the BGC system. This method is
+      needed in order to light the FPD.
+    </li>
+  </div>
+</ol>
+
+<div class="py-8">
+  <mat-divider></mat-divider>
+</div>
+
+<p class="text-xl text-center font-medium pb-4">Default Initiation Method Information</p>
+
+<!-- Method Details Container -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Method Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="flex flex-row gap-4">
+      <p class="font-medium">Description:</p>
+      {{ defaultMethod.description }}
+    </div>
+
+    <div class="py-2">
+      <mat-divider></mat-divider>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <p class="font-medium">Cycle time:</p>
+      {{ defaultMethod.cycle_time_string }}
+      <p class="font-medium">Heart-cut:</p>
+      {{ defaultMethod.heart_cut_string }}
+      <p class="font-medium">High vs. Low Volume:</p>
+      {{ defaultMethod.volume_string }}
+      <p class="font-medium">Compounds:</p>
+      {{ defaultMethod.compounds_string }}
+    </div>
+  </mat-card-content>
+</mat-card>

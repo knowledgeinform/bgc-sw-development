@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="97.673798mm"
+   height="170.45586mm"
+   viewBox="0 0 97.673796 170.45585"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="0.73139029"
+     inkscape:cx="325.40766"
+     inkscape:cy="311.05144"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="87.544456,220.86403"
+       orientation="1,0"
+       id="guide8"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="128.0609,194.45599"
+       orientation="0,-1"
+       id="guide28"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="153.02192,24.431632"
+       orientation="0,-1"
+       id="guide29"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-57.70414,-98.220585)">
+    <g
+       id="g23"
+       style="opacity:1;fill:#ababab;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8;stroke-dasharray:none;stroke-opacity:1"
+       transform="translate(4.7028016,13.023142)">
+      <path
+         d="M 116.3991,100.22644 A 31.291716,13.746651 0 0 1 85.19325,113.591 31.291716,13.746651 0 0 1 53.986886,100.22644 h -0.0646 v 140.69942 a 31.291716,13.746651 0 0 1 31.273543,-13.66583 31.291716,13.746651 0 0 1 31.267861,13.45344 V 100.22644 Z"
+         style="fill:#ababab;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8;stroke-dasharray:none;stroke-opacity:1"
+         id="path19" />
+      <ellipse
+         style="display:inline;fill:#ababab;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse18"
+         cx="85.193054"
+         cy="99.844093"
+         rx="31.291716"
+         ry="13.746651" />
+      <ellipse
+         style="display:inline;fill:#ababab;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.8;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse19"
+         cx="85.195946"
+         cy="241.00665"
+         rx="31.291716"
+         ry="13.746651" />
+    </g>
+    <path
+       d="m 143.19419,99.84151 -12.53154,21.30361 9.45834,0.077 v 145.37665 h 6.85281 V 121.27793 l 8.40414,0.0682 z"
+       style="fill:#7d7d7d;fill-opacity:1;stroke:none;stroke-width:1.8"
+       id="path30" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:Corbel;-inkscape-font-specification:'Corbel, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:vertical-lr;opacity:1;fill:#3accde;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.8;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       x="-88.486298"
+       y="-230.76117"
+       id="text32"
+       transform="scale(-1)"><tspan
+         sodipodi:role="line"
+         id="tspan32"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:Corbel;-inkscape-font-specification:'Corbel, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;writing-mode:vertical-lr;direction:ltr;fill:#000000;fill-opacity:1;stroke-width:1.8"
+         x="-88.486298"
+         y="-230.76117">Sampling</tspan></text>
+  </g>
+</svg>

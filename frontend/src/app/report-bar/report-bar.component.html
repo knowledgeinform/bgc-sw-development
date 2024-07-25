@@ -1,0 +1,43 @@
+<div class="h-full flex flex-col gap-y-4 p-4 mat-primary-bg">
+  <div class="flex-auto h-72">
+    <app-system-status [_methodLoadedStatus]="methodLoadedStatus" [_isFlameLit]="isFlameLit"> </app-system-status>
+  </div>
+  <div class="flex-auto h-{19rem}">
+    <app-method [_methodLoaded]="methodLoaded"> </app-method>
+  </div>
+  <div class="flex-auto h-96">
+    <app-run-progress></app-run-progress>
+  </div>
+  <!-- list of commands -->
+  <div class="flex flex-row gap-x-2 justify-end mat-primary-color">
+    <button mat-icon-button matTooltip="Error Log" class="hover:bg-indigo-400" disabled>
+      <mat-icon>warning</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Valves" class="hover:bg-indigo-400" disabled>
+      <mat-icon svgIcon="valve"></mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="User Guide" class="hover:bg-indigo-400" disabled>
+      <mat-icon>book</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Admin" class="hover:bg-indigo-400" disabled>
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="powerMenu" matTooltip="Power" class="hover:bg-indigo-400">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
+    <mat-menu #powerMenu="matMenu">
+      <ng-container [ngSwitch]="clarityStatus">
+        <ng-container *ngSwitchCase="CLARITY_RUNNING">
+          <button mat-menu-item (click)="stopClarity()">Stop Clarity</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="CLARITY_STOPPED">
+          <button mat-menu-item (click)="startClarity()">Start Clarity</button>
+        </ng-container>
+      </ng-container>
+      <button mat-menu-item>TBD...</button>
+    </mat-menu>
+    <button mat-icon-button matTooltip="Help" class="hover:bg-indigo-400" disabled>
+      <mat-icon>help</mat-icon>
+    </button>
+  </div>
+</div>

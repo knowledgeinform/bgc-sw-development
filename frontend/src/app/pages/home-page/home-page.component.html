@@ -1,0 +1,39 @@
+<div class="w-full h-full flex flex-row">
+  <div class="flex-grow">
+    <!-- No animation for changing tabs -->
+    <mat-tab-group animationDuration="0ms" mat-align-tabs="start" preserveContent="true" class="h-full">
+      <!-- System Parameters Page -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">build</mat-icon>
+          System Parameters
+        </ng-template>
+        <ng-template matTabContent>
+          <app-system-parameters-page
+            (loadMethodStatus)="updateLoadMethodStatus($event)"
+            (isFlameLit)="updateFlameStatus($event)"
+            (method)="updateMethod($event)">
+          </app-system-parameters-page>
+        </ng-template>
+      </mat-tab>
+      <!-- Detection & Monitoring Page -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">bar_chart</mat-icon>
+          Detection & Monitoring
+        </ng-template>
+        <ng-template matTabContent>
+          <app-detection-and-monitoring-page></app-detection-and-monitoring-page>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- Report bar will always be visible on all pages -->
+  <div class="flex-none w-[30rem]">
+    <app-report-bar
+      [_methodLoadedStatus]="methodLoadedStatus"
+      [_isFlameLit]="isFlameLit"
+      [_methodLoaded]="methodLoaded">
+    </app-report-bar>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="h-full rounded-md mat-primary-bg-light p-4 flex flex-col gap-2">
+  <mat-button-toggle-group [(ngModel)]="methodStep" vertical>
+    <mat-accordion multi displayMode="flat">
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Initiation Steps </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="flex flex-col">
+          <mat-button-toggle
+            [value]="MODE.load_initiation_method"
+            matTooltip="Instructions on loading an initiation method"
+            [matTooltipShowDelay]="1000">
+            <div class="flex justify-between items-center">
+              Load Initiation Method
+              <mat-icon *ngIf="loadInitiationMethodStatus; else notLoaded">check_circle</mat-icon>
+              <ng-template #notLoaded>
+                <mat-icon>play_circle_outline</mat-icon>
+              </ng-template>
+            </div>
+          </mat-button-toggle>
+          <mat-button-toggle
+            [value]="MODE.light_fpd"
+            matTooltip="Instructions on how to light the FPD"
+            [matTooltipShowDelay]="1000">
+            <div class="flex justify-between items-center">
+              Light FPD
+              <mat-icon *ngIf="lightFPDStatus; else notLoaded">check_circle</mat-icon>
+              <ng-template #notLoaded>
+                <mat-icon>play_circle_outline</mat-icon>
+              </ng-template>
+            </div>
+          </mat-button-toggle>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Process Steps </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="flex flex-col">
+          <mat-button-toggle
+            [value]="MODE.load_method"
+            matTooltip="Instructions on selecting and loading a method for testing chemical compound(s)"
+            [matTooltipShowDelay]="1000">
+            <div class="flex justify-between items-center">
+              Load Method
+              <mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>
+            </div>
+          </mat-button-toggle>
+          <mat-button-toggle
+            [value]="MODE.standard_injection"
+            matTooltip="Instructions on how to complete a standard (or liquid) injection sample"
+            [matTooltipShowDelay]="1000">
+            Standard Injection
+          </mat-button-toggle>
+          <mat-button-toggle
+            [value]="MODE.sample"
+            matTooltip="Instructions on how to complete a vapor sample"
+            [matTooltipShowDelay]="1000">
+            Sample
+          </mat-button-toggle>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-button-toggle-group>
+</div>

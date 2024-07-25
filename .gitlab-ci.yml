@@ -1,0 +1,164 @@
+default:
+  tags: [small] # use small runners for our jobs to get more consistent builds
+  retry:
+    max: 1
+    when:
+      - runner_system_failure
+      - scheduler_failure
+      - stuck_or_timeout_failure
+      - unknown_failure
+
+stages:
+  - build
+  - scan
+  - lint
+  - test
+  - publish
+  - release
+
+variables:
+  POETRY_VERSION: 1.4.1
+  PROJECT: bgc-sw
+  PYTHON_VERSION: "3.11"
+  SCRIPTDIR: "$CI_PROJECT_DIR"
+  TRIVY_VERSION: 0.41.0
+  WHEELS_DIR: wheels
+
+.run_on_merge_request:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+.setup_python_no_poetry_install:
+  variables:
+    PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
+  cache:
+    key:
+      files:
+        - poetry.lock
+    paths:
+      - .cache/pip
+      - .venv/
+
+.setup_python_linux:
+  extends:
+    - .setup_python_no_poetry_install
+  before_script:
+    - python3 -m pip install -q poetry==$POETRY_VERSION
+    - poetry install -q # uses poetry.lock exclusively if it exists
+
+.setup_frontend_windows:
+  # assumes node 18.X is already on non-docker CI runner
+
+  before_script:
+    - pushd frontend
+    - node -v
+    - npm -v
+    - npm config set cafile ../cafile-with-apl.pem
+    - $env:NODE_EXTRA_CA_CERTS=../cafile-with-apl.pem
+    - npm set registry=https://registry.npmjs.org
+    - npm install -g @angular/cli@15.2.9
+    - npm install
+    - popd
+
+.setup_frontend_linux:
+  image: node:18
+  before_script:
+    - pushd frontend
+    - node -v
+    - npm -v
+    - npm config set cafile ../cafile-with-apl.pem
+    - NODE_EXTRA_CA_CERTS=../cafile-with-apl.pem
+    - npm set registry=https://registry.npmjs.org
+    - npm install -g @angular/cli@15.2.9
+    - npm install
+    - popd
+
+build:
+  stage: build
+  extends:
+    - .setup_python_linux
+    - .run_on_merge_request
+  image: python:${PYTHON_VERSION}
+  script:
+    - echo Build steps when we get something to build...
+
+build_windows_exe:
+  stage: build
+  tags: [bgc-powershell]
+  extends:
+    - .setup_python_no_poetry_install
+    - .setup_frontend_windows
+    - .run_on_merge_request
+  script:
+    - python -V
+    - python -m pip install -q poetry==$env:POETRY_VERSION
+    - poetry install --with=package -q # install with the packaging tools
+    - poetry run .\server\distribute\package.bat
+    - copy-item -Path .\dist\bgc-sw -Destination .\bgc-sw -Recurse
+  artifacts:
+    name: $ARTIFACT_ID
+    expose_as: "EXE Artifacts"
+    paths:
+      - ./bgc-sw
+
+  variables:
+    ARTIFACT_ID: "${PROJECT}-exe-build-${CI_PIPELINE_ID}-${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHORT_SHA}"
+
+lint_server:
+  stage: lint
+  extends:
+    - .setup_python_linux
+    - .run_on_merge_request
+  needs: []
+  image: python:${PYTHON_VERSION}
+  script:
+    - ./scripts/lint.sh
+
+lint_frontend:
+  stage: lint
+  extends:
+    - .setup_frontend_linux
+    - .run_on_merge_request
+  needs: []
+  script:
+    - cd ./frontend
+    # fail if too many warnings
+    - ng lint --max-warnings 10
+    # NOTE: Adding "exit_codes: 2" should give warning but it doesn't.
+    # NOTE: Reinstate following if this gets fixed and remove lint_frontend_permissive but it seems any error then stops the job and +e sets codes to 0 so ug
+    # - if [ $? != 0 ]; then exit 1; fi
+    # warn if there are any warnings
+    # - ng lint --max-warnings 0
+    # - if [ $? != 0 ]; then exit 2; fi
+  # allow_failure:
+  #   exit_codes: 2
+
+lint_frontend_permissive:
+  stage: lint
+  extends:
+    - .setup_frontend_linux
+    - .run_on_merge_request
+  needs: []
+  script:
+    - cd ./frontend
+    # warn if any warnings
+    - ng lint --max-warnings 0
+  allow_failure: true
+
+trivy:
+  stage: scan
+  extends:
+    - .run_on_merge_request
+  needs: []
+  image:
+    name: aquasec/trivy:${TRIVY_VERSION}
+    entrypoint: [""]
+  script:
+    - trivy fs --scanners config,vuln --exit-code 0 --format template --template "@/contrib/gitlab-codequality.tpl" -o trivy-scan.json .
+  # Enables https://docs.gitlab.com/ee/user/application_security/container_scanning/ (Container Scanning report is available on GitLab EE Ultimate or GitLab.com Gold)
+  artifacts:
+    reports:
+      codequality: trivy-scan.json

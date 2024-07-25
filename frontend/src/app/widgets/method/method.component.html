@@ -1,0 +1,38 @@
+<div class="h-full rounded-md bg-white p-2 flex flex-col gap-2">
+  <p class="text-2xl text-center font-semibold">Method</p>
+  <mat-card class="mat-primary-bg-light flex flex-initial h-48">
+    <!-- Method overview -->
+    <mat-card-content *ngIf="methodLoaded.type !== TYPE.no_selection; else noMethodLoaded">
+      <div class="flex flex-row gap-2">
+        <div class="border-solid border-2 border-black bg-white p-2">
+          <div class="grid grid-cols-2 gap-2">
+            <p class="font-medium">Name:</p>
+            {{ methodLoaded.type }}
+            <p class="font-medium">Cycle Time:</p>
+            {{ methodLoaded.cycle_time_string }}
+          </div>
+        </div>
+        <div class="border-solid border-2 border-black bg-white p-2">
+          <div class="flex flex-col gap-2">
+            <p class="font-medium">Compounds</p>
+            {{ methodLoaded.compounds_string }}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center p-4">
+        <button mat-raised-button (click)="openMethodDetailsDialog()">
+          <mat-icon>list_alt</mat-icon>
+          Show Method Details
+        </button>
+      </div>
+    </mat-card-content>
+
+    <!-- Method not loaded -->
+    <ng-template #noMethodLoaded>
+      <mat-card-content>
+        <p class="text-center">No method has been loaded.</p>
+      </mat-card-content>
+    </ng-template>
+  </mat-card>
+</div>

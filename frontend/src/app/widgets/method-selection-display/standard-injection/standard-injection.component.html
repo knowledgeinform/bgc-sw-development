@@ -1,0 +1,71 @@
+<p class="text-2xl text-center font-semibold">Standard Injection Instructions</p>
+
+<br />
+
+<p class="font-semibold">Before the first sample of the day AND after the last sample of the day, run a QC.</p>
+
+<br />
+
+<ol class="list-decimal">
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <!--<mat-icon *ngIf="!methodControl.hasError('required'); else notLoaded">check_circle</mat-icon>-->
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Click the "Standard Injection" button in the "Quick Access" panel. You will need to wait [6] minutues prior ro
+      injecting the sample. This time will vary depending on the method you select.
+    </li>
+  </div>
+
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <!--<mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>-->
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Inject the sample when the pop-up message appears. This will sample for CT A. Indicate that a liquid sample was
+      injected into CT A using the checkbox below.
+    </li>
+  </div>
+
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <!--<mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>-->
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>Wait [6] minutes for CT B to switch from "Analyzing" to "Sampling".</li>
+  </div>
+
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <!--<mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>-->
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Inject the sample when the pop-up message appears. This will sample for CT B. Indicate that a liquid sample was
+      injected into CT B using the checkbox below.
+    </li>
+  </div>
+
+  <div class="flex flex-row gap-6">
+    <div class="overflow-visible">
+      <!--<mat-icon *ngIf="loadMethodStatus; else notLoaded">check_circle</mat-icon>-->
+      <ng-template #notLoaded>
+        <mat-icon>play_circle_outline</mat-icon>
+      </ng-template>
+    </div>
+    <li>
+      Verify that the injection amount is accurate or update the injection amount as needed. Click the "Standard
+      Injections Complete" button below.
+    </li>
+  </div>
+</ol>

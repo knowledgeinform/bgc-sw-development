@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+.mat-primary-bg {
+  background-color: mat.get-color-from-palette($bgc_frontend-primary) !important;
+}
+.mat-primary-color {
+  color: mat.get-color-from-palette($bgc_frontend-primary, default-contrast) !important;
+}
+
+.mat-primary-bg-light {
+  background-color: mat.get-color-from-palette($bgc_frontend-primary, lighter) !important;
+}
+.mat-primary-color-light {
+  color: mat.get-color-from-palette($bgc_frontend-primary, lighter-contrast) !important;
+}
+
+.mat-primary-bg-dark {
+  background-color: mat.get-color-from-palette($bgc_frontend-primary, darker) !important;
+}
+.mat-primary-color-dark {
+  color: mat.get-color-from-palette($bgc_frontend-primary, darker-contrast) !important;
+}
+
+.mat-accent-bg {
+  background-color: mat.get-color-from-palette($bgc_frontend-accent) !important;
+}
+.mat-accent-color {
+  color: mat.get-color-from-palette($bgc_frontend-accent, default-contrast) !important;
+}
+.mat-accent-font {
+  color: mat.get-color-from-palette($bgc_frontend-accent) !important;
+}
+
+.mat-accent-bg-light {
+  background-color: mat.get-color-from-palette($bgc_frontend-accent, lighter) !important;
+}
+.mat-accent-color-light {
+  background-color: mat.get-color-from-palette($bgc_frontend-accent, lighter-contrast) !important;
+}
+
+.mat-accent-bg-dark {
+  background-color: mat.get-color-from-palette($bgc_frontend-accent, darker) !important;
+}
+.mat-accent-color-dark {
+  background-color: mat.get-color-from-palette($bgc_frontend-accent, darker-contrast) !important;
+}

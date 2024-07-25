@@ -1,0 +1,114 @@
+{
+  "autoDocstring.docstringFormat": "pep257",
+  "autoDocstring.generateDocstringOnEnter": true,
+  "autoDocstring.includeName": false,
+  "autoDocstring.logLevel": "Info",
+  "autoDocstring.quoteStyle": "\"\"\"",
+  "autoDocstring.startOnNewLine": true,
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "python.analysis.typeCheckingMode": "off",
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./",
+    "-p",
+    "test_*.py"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": true,
+  "cSpell.words": [
+    "Alicat",
+    "asyncio",
+    "baudrate",
+    "endianness",
+    "fastapi",
+    "Isocratic",
+    "Linearization",
+    "LINEARIZATION",
+    "minimalmodbus",
+    "modbus",
+    "Modbus",
+    "mypy",
+    "pymodbus",
+    "Pymodbus",
+    "slaveaddress",
+    "SLPM",
+    "tweek",
+    "uvicorn"
+  ],
+  "todo-tree.tree.scanMode": "workspace only",
+  "todo-tree.tree.autoRefresh": false,
+  "todo-tree.filtering.includeGlobs": [
+    "**/*.{py,txt,rst,toml,ttl,md,yml}",
+    "**/.*.{py,txt,rst,toml,ttl,md,yml}",
+  ],
+  "todo-tree.filtering.excludeGlobs": [
+    "**/node_modules",
+    "**/*.tmp",
+    "**/.venv",
+    "**/__pycache__",
+    "**/.mypy_cache",
+    "**/build_gradle",
+  ],
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TBD",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[]"
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "FIXME": {
+      "foreground": "red",
+      "icon": "alert",
+      "type": "text-and-comment"
+    },
+    "TBD": {
+      "foreground": "red",
+      "icon": "alert",
+      "type": "text-and-comment"
+    },
+    "TODO": {
+      "foreground": "limegreen",
+      "icon": "tasklist",
+      "type": "text-and-comment"
+    }
+  },
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.tree.buttons.export": true,
+  "todo-tree.tree.groupedByTag": true,
+  "todo-tree.tree.showCountsInTree": true,
+  "testExplorer.useNativeTesting": false,
+  "testExplorer.addToEditorContextMenu": true,
+  "testing.followRunningTest": false,
+  "testExplorer.showExpandButton": 5,
+  "pythonTestExplorer.testplanEnabled": false,
+  "ruff.enable": true,
+  "ruff.codeAction.fixViolation": {
+    "enable": true
+  },
+  "ruff.showNotifications": "always",
+  "mypy-type-checker.preferDaemon": false, // daemon seems to be flaky (just on windows?)
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.ignorePatterns": [
+    "**/site-packages/**/*.py",
+    ".vscode/*.py",
+    "**/in_progress/*.py",
+  ],
+  "mypy-type-checker.showNotifications": "always",
+  "mypy-type-checker.args": [
+    // "--exclude `^.*/in_progress/.*\\.py$`"
+  ],
+}

@@ -1,0 +1,75 @@
+<div class="h-full rounded-md bg-white p-2 flex flex-col gap-2">
+  <p class="text-2xl text-center font-semibold">
+    System Status
+    <button mat-icon-button matTooltip="[TBD] Hover to see errors and click for error log">
+      <mat-icon>info</mat-icon>
+    </button>
+  </p>
+  <!-- System status details -->
+  <div class="flex flex-row gap-2 justify-between">
+    <!-- Status colunm -->
+    <div class="flex flex-col gap-2">
+      <p class="text-lg">
+        <span *ngIf="methodLoadedStatus; else notLoadedTemp">
+          <app-system-status-light [status]="tempStatus"></app-system-status-light>
+        </span>
+        <ng-template #notLoadedTemp>
+          <button mat-icon-button matTooltip="[TBD] Click to check tempuratue status.">
+            <mat-icon>warning</mat-icon>
+          </button>
+        </ng-template>
+        Temperatures
+      </p>
+
+      <p class="text-lg">
+        <span *ngIf="methodLoadedStatus; else notLoadedComm">
+          <app-system-status-light [status]="commStatus"></app-system-status-light>
+        </span>
+        <ng-template #notLoadedComm>
+          <button mat-icon-button matTooltip="[TBD] Click to check communication status.">
+            <mat-icon>warning</mat-icon>
+          </button>
+        </ng-template>
+        Communications
+      </p>
+
+      <p class="text-lg">
+        <span *ngIf="methodLoadedStatus; else notLoadedRun">
+          <app-system-status-light [status]="runStatus"></app-system-status-light>
+        </span>
+        <ng-template #notLoadedRun>
+          <button mat-icon-button matTooltip="Not ready to run. Check error log.">
+            <mat-icon [ngStyle]="{ color: 'red' }">warning</mat-icon>
+          </button>
+        </ng-template>
+        Run Status
+      </p>
+    </div>
+    <!-- Components container and flame status-->
+    <div class="flex flex-col gap-4 w-1/2">
+      <!-- Component container -->
+      <mat-card class="mat-primary-bg-light">
+        <mat-card-content>
+          <p class="text-center">Components adjusting temperatures</p>
+          <div class="border-solid border-2 border-black bg-white">
+            <p class="text-center">{{ componentTempNumber }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <!-- Flame status -->
+      <p class="text-lg font-semibold">
+        <span *ngIf="isFlameLit; else flameNotLit">
+          <mat-icon svgIcon="flame_on"></mat-icon>
+          Flame lit
+        </span>
+        <ng-template #flameNotLit>
+          <mat-icon svgIcon="flame_off"></mat-icon>
+          Flame not lit
+          <sup>
+            <mat-icon matTooltip="Flame not lit [TBD]">warning</mat-icon>
+          </sup>
+        </ng-template>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class FlameIgniterDriver:
+    pass

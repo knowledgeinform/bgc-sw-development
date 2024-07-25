@@ -1,0 +1,11 @@
+<span class="px-3">
+  <span *ngIf="systemStatus === STATUS.no_status">
+    <span class="light" [ngStyle]="{ 'background-color': 'gray' }"></span>
+  </span>
+  <span *ngIf="systemStatus === STATUS.warning">
+    <span class="light" [ngStyle]="{ 'background-color': 'yellow' }"></span>
+  </span>
+  <span *ngIf="systemStatus === STATUS.good">
+    <span class="light" [ngStyle]="{ 'background-color': 'green' }"></span>
+  </span>
+</span>

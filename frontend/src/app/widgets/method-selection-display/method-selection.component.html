@@ -1,0 +1,19 @@
+<div class="h-full rounded-md mat-primary-bg-light p-4 flex flex-col gap-2">
+  <ng-container *ngIf="display === MODE.load_initiation_method">
+    <app-load-initiation-method [loadInitiationMethodStatus]="loadInitiationMethodStatus"> </app-load-initiation-method>
+  </ng-container>
+  <ng-container *ngIf="display === MODE.light_fpd">
+    <app-light-fpd [lightFPDStatus]="lightFPDStatus"></app-light-fpd>
+  </ng-container>
+  <ng-container *ngIf="display === MODE.load_method">
+    <app-load-method
+      [loadMethodStatus]="loadMethodStatus"
+      (methodSelected)="isMethodSelected($event)"></app-load-method>
+  </ng-container>
+  <ng-container *ngIf="display === MODE.standard_injection">
+    <app-standard-injection></app-standard-injection>
+  </ng-container>
+  <ng-container *ngIf="display === MODE.sample">
+    <app-sample></app-sample>
+  </ng-container>
+</div>
